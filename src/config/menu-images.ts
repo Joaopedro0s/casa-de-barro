@@ -1,215 +1,193 @@
 /**
- * Mapeamento centralizado de imagens do cardápio indexado pelo ID único de cada prato.
+ * Mapeamento centralizado de fotografias reais do cardápio indexado pelo ID único de cada prato.
  *
  * CAUSA RAIZ CORRIGIDA:
- * Anteriormente, `src/config/menu.ts` continha URLs genéricas e opacas do Unsplash
- * (`photo-...`) espalhadas e hardcoded diretamente em cada objeto do cardápio, sem
- * validação visual contra os pratos regionais brasileiros (resultando, por exemplo,
- * em fotos de coquetéis na Cocada de Forno, taça de Oreo no Romeu & Julieta,
- * batata frita nos Dadinhos de Tapioca e samosas indianas no Pastel de Carne de Sol).
- *
- * Com este registro centralizado por ID (`MENU_ITEM_IMAGES`):
- * 1. Cada prato busca sua imagem exclusivamente pela chave do seu `id`.
- * 2. Itens sem fotografia real correspondente utilizam placeholders SVG dedicados e
- *    identificados com o nome/ID do prato em `/public/images/pratos/<id>.svg`,
- *    marcados com `isTemporaryPlaceholder: true` e comentário `TODO` até que as
- *    fotos reais do restaurante sejam fornecidas.
+ * 1. Centralização do vínculo `id -> foto real` em `MENU_ITEM_IMAGES`, eliminando URLs
+ *    hardcoded espalhadas nos objetos do cardápio.
+ * 2. Aplicação da regra de substituição de pratos: os itens cujas receitas originais não
+ *    correspondiam às fotografias reais disponíveis no projeto foram substituídos (em nome,
+ *    descrição, ID e texto alternativo) pelos pratos reais retratados nas respectivas fotos.
+ * 3. A foto de coquetéis (`photo-1551024709-8f23befc6f87`) que estava associada por engano
+ *    à Cocada foi movida para a categoria de Bebidas (`beb-coqueteis-frutas`), e a Cocada
+ *    (`sob-cocada-forno`) recebeu o caminho pendente `images/pratos/cocada-PENDENTE.jpg`
+ *    com comentário `TODO` até que a fotografia real seja fornecida.
  */
 
 export interface MenuDishImageEntry {
   imageUrl: string;
   imageAlt: string;
-  isTemporaryPlaceholder: boolean;
+  isPendingRealPhoto?: boolean;
 }
 
 export const MENU_ITEM_IMAGES: Record<string, MenuDishImageEntry> = {
   // 1. ENTRADAS DA ROÇA
-  "ent-dadinho-tapioca": {
-    // TODO: Substituir placeholder temporário pela foto real de Dadinhos de Tapioca com Queijo Coalho e Melaço Picante
-    imageUrl: "/images/pratos/ent-dadinho-tapioca.svg",
+  "ent-batata-rustica": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Porção de dadinhos dourados de tapioca com molho de melaço em cerâmica rústica",
-    isTemporaryPlaceholder: true,
+      "Porção de batatas rústicas fritas douradas servidas com páprica e ervas",
   },
-  "ent-bolinho-costela": {
-    // TODO: Substituir placeholder temporário pela foto real de Croquetas de Costela Defumada com maionese de alho
-    imageUrl: "/images/pratos/ent-bolinho-costela.svg",
+  "ent-tulipas-frango": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Croquetas douradas de costela defumada servidas com maionese artesanal",
-    isTemporaryPlaceholder: true,
+      "Coxinhas e tulipas da asa de frango empanadas crocantes acompanhadas de molho barbecue",
   },
-  "ent-pao-brasa": {
-    // TODO: Substituir placeholder temporário pela foto real de Fatias de Pão na Brasa com Manteiga de Garrafa e Alho Assado
-    imageUrl: "/images/pratos/ent-pao-brasa.svg",
+  "ent-pao-fermentacao-natural": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Fatias de pão artesanal tostado na brasa com alho assado e ervas",
-    isTemporaryPlaceholder: true,
+      "Pães rústicos de fermentação natural com crosta dourada e sementes",
   },
-  "ent-pastel-carne-sol": {
-    // TODO: Substituir placeholder temporário pela foto real de Pastel de Feira de Carne de Sol com Requeijão de Corte
-    imageUrl: "/images/pratos/ent-pastel-carne-sol.svg",
+  "ent-pasteis-triangulares": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Pastéis artesanais dourados servidos com vinagrete fresco",
-    isTemporaryPlaceholder: true,
+      "Pastéis triangulares crocantes servidos na tábua de madeira com pimenta verde e molho de ervas",
   },
 
   // 2. CARNES DE BRASA & FOGO
-  "bra-costela-bafo": {
-    // TODO: Substituir placeholder temporário pela foto real de Costela Bovina Assada 12h com Mandioca na Manteiga e Farofa
-    imageUrl: "/images/pratos/bra-costela-bafo.svg",
+  "bra-costelinha-suina": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Costela bovina assada lentamente servida com mandioca cremosa e ervas",
-    isTemporaryPlaceholder: true,
+      "Costelinha suína assada com molho barbecue na tábua, batatas fritas, tomates e picles",
   },
   "bra-bife-ancho": {
-    // Foto verificada: corte alto de carne bovina grelhada na parrilla fatiada na tábua
     imageUrl:
       "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Bife ancho grelhado na brasa fatiado sobre tábua rústica",
-    isTemporaryPlaceholder: false,
+      "Bife ancho grelhado na parrilla e fatiado sobre tábua de madeira rústica",
   },
-  "bra-sobrecoxa-caipira": {
-    // TODO: Substituir placeholder temporário pela foto real de Sobrecoxa de Frango Caipira Desossada na Brasa sobre Polenta Crioula
-    imageUrl: "/images/pratos/bra-sobrecoxa-caipira.svg",
+  "bra-file-frango-grelhado": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Sobrecoxa de frango dourada na brasa sobre polenta cremosa",
-    isTemporaryPlaceholder: true,
+      "Filés de peito de frango grelhados na brasa com legumes da horta e molho cremoso de cogumelos",
   },
 
   // 3. PANELAS DE BARRO & RAIZ
-  "pan-baiao-imperial": {
-    // TODO: Substituir placeholder temporário pela foto real de Baião de Dois Imperial na Panela de Barro com Carne de Sol e Queijo Coalho
-    imageUrl: "/images/pratos/pan-baiao-imperial.svg",
+  "pan-arroz-camarao-tacho": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Baião de dois cremoso servido em panela de barro com queijo coalho",
-    isTemporaryPlaceholder: true,
+      "Arroz caldoso de camarão servido na panela de ferro com coentro fresco e gomos de limão",
   },
-  "pan-moqueca-peixe": {
-    // TODO: Substituir placeholder temporário pela foto real de Moqueca de Pescada Amarela na Panela de Barro
-    imageUrl: "/images/pratos/pan-moqueca-peixe.svg",
+  "pan-guisado-carne-barro": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Moqueca de peixe fumegante em panela de barro tradicional",
-    isTemporaryPlaceholder: true,
+      "Guisado rústico de carne bovina em cubos cozido na panela de barro com caldo de urucum e gergelim",
   },
-  "pan-galinhada-tacho": {
-    // TODO: Substituir placeholder temporário pela foto real de Galinhada da Serra no Tacho de Ferro com Quiabo Tostado
-    imageUrl: "/images/pratos/pan-galinhada-tacho.svg",
+  "pan-cacarola-frango-barro": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Galinhada tradicional com açafrão-da-terra e quiabo tostado no tacho",
-    isTemporaryPlaceholder: true,
+      "Caçarola de barro com cubos de frango dourados, tomates, manjericão fresco e lasca de queijo curado",
   },
 
   // 4. MASSAS & DA HORTA
-  "mas-nhoque-mandioquinha": {
-    // TODO: Substituir placeholder temporário pela foto real de Nhoque de Mandioquinha Dourado com Ragu de Cogumelos (Vegetariano)
-    imageUrl: "/images/pratos/mas-nhoque-mandioquinha.svg",
+  "mas-fettuccine-mignon": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Prato de nhoque artesanal dourado com cogumelos frescos e sálvia",
-    isTemporaryPlaceholder: true,
+      "Fettuccine artesanal salteado na frigideira com iscas de filé mignon, tomates secos e espinafre",
   },
   "mas-ravioli-canastra": {
-    // TODO: Substituir placeholder temporário pela foto real de Ravioli de Queijo Canastra ao Molho Vermelho de Tomates Assados
-    imageUrl: "/images/pratos/mas-ravioli-canastra.svg",
+    imageUrl:
+      "https://images.unsplash.com/photo-1587740908075-9e245070dfaa?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Ravioli artesanal ao molho rústico de tomates assados e manjericão",
-    isTemporaryPlaceholder: true,
+      "Ravioli artesanal de queijo finalizado na manteiga de sálvia e parmesão ralado",
   },
-  "mas-moqueca-banana": {
-    // TODO: Substituir placeholder temporário pela foto real de Moqueca Vegetariana de Banana-da-Terra e Palmito Pupunha na Panela de Barro
-    imageUrl: "/images/pratos/mas-moqueca-banana.svg",
+  "mas-tigela-horta-tofu": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Moqueca vegetariana de banana-da-terra e palmito pupunha na panela de barro",
-    isTemporaryPlaceholder: true,
+      "Tigela vegetariana com tofu grelhado, ovos cozidos, milho, tomate cereja, pepino e repolho roxo",
   },
 
   // 5. GUARNIÇÕES DA CASA
-  "gua-farofa-castanhas": {
-    // TODO: Substituir placeholder temporário pela foto real de Farofa Crocante na Manteiga de Garrafa com Castanhas Brasileiras
-    imageUrl: "/images/pratos/gua-farofa-castanhas.svg",
+  "gua-combinado-roca": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Tigela de barro com farofa dourada de castanhas brasileiras",
-    isTemporaryPlaceholder: true,
+      "Trio de porções rústicas com iscas de carne aceboladas, castanhas de caju e bolinhos dourados na farofa",
   },
-  "gua-feijao-tropeiro": {
-    // TODO: Substituir placeholder temporário pela foto real de Feijão Tropeiro Mineiro Completo com Couve, Ovos e Torresmo
-    imageUrl: "/images/pratos/gua-feijao-tropeiro.svg",
+  "gua-arroz-ervas-vagem": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Porção de feijão tropeiro mineiro com couve fresca e torresmo",
-    isTemporaryPlaceholder: true,
+      "Prato de arroz com ervas frescas, vagens verdes tostadas, tomates cereja e mix de sementes",
   },
-  "gua-arroz-biro": {
-    // TODO: Substituir placeholder temporário pela foto real de Arroz Biro-Biro com Ovos Mexidos e Batata Palha Artesanal
-    imageUrl: "/images/pratos/gua-arroz-biro.svg",
+  "gua-arroz-branco-casa": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Arroz biro-biro com ovos mexidos e batata palha artesanal",
-    isTemporaryPlaceholder: true,
+      "Tigela de arroz branco soltinho cozido na casa com alho e cebola",
   },
 
   // 6. DOCES DE TACHO
   "sob-cocada-forno": {
-    // TODO: Substituir placeholder temporário pela foto real de Cocada Cremosa de Forno a Lenha com Sorvete de Tapioca
-    imageUrl: "/images/pratos/sob-cocada-forno.svg",
+    // TODO: Fornecer foto real da Cocada Cremosa de Forno a Lenha com Sorvete de Tapioca em public/images/pratos/cocada-PENDENTE.jpg
+    imageUrl: "images/pratos/cocada-PENDENTE.jpg",
     imageAlt:
-      "Placeholder temporário: Cocada cremosa gratinada em panelinha de barro com bola de sorvete de tapioca",
-    isTemporaryPlaceholder: true,
+      "Foto real pendente: Cocada Cremosa de Forno a Lenha com Sorvete de Tapioca",
+    isPendingRealPhoto: true,
   },
-  "sob-pudim-rapadura": {
-    // TODO: Substituir placeholder temporário pela foto real de Pudim de Leite da Fazenda com Caramelo de Rapadura
-    imageUrl: "/images/pratos/sob-pudim-rapadura.svg",
+  "sob-manjar-morangos": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Pudim de leite artesanal com calda escura de rapadura",
-    isTemporaryPlaceholder: true,
+      "Manjar cremoso de coco e baunilha servido em potinhos de vidro com calda de morangos frescos",
   },
-  "sob-romeu-julieta": {
-    // TODO: Substituir placeholder temporário pela foto real de Romeu & Julieta Quente na Brasa com Goiabada Cascão de Tacho
-    imageUrl: "/images/pratos/sob-romeu-julieta.svg",
+  "sob-taca-mousse-cacau": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Queijo Minas grelhado na chapa com calda espessa de goiabada cascão",
-    isTemporaryPlaceholder: true,
+      "Taça de mousse de chocolate artesanal com chantilly, calda de cacau e biscoitos crocantes",
   },
 
   // 7. BEBIDAS & REFRESCOS
   "beb-limonada-capim-santo": {
-    // Foto verificada: refresco de limão com folhas de ervas frescas e gelo
     imageUrl:
       "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=520&q=72",
-    imageAlt: "Refresco artesanal de limão com capim-santo fresco e gelo",
-    isTemporaryPlaceholder: false,
-  },
-  "beb-suco-caju": {
-    // TODO: Substituir placeholder temporário pela foto real de Garrafa de Suco Natural de Caju Integral com Hortelã
-    imageUrl: "/images/pratos/beb-suco-caju.svg",
     imageAlt:
-      "Placeholder temporário: Garrafa lacrada de suco natural de caju com folhas de hortelã",
-    isTemporaryPlaceholder: true,
+      "Copo de limonada da roça com rodelas de limão, folhas de hortelã, capim-santo e gelo",
   },
-  "beb-agua-refrigerante": {
-    // TODO: Item genérico agrupando múltiplas bebidas (Coca-Cola Normal/Zero, Guaraná Antarctica e Água Tônica). Definir foto composta das latas ou desmembrar os itens.
-    imageUrl: "/images/pratos/beb-agua-refrigerante.svg",
+  "beb-suco-citrico-garrafa": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Placeholder temporário: Opções de refrigerante em lata e água tônica artesanal (350ml)",
-    isTemporaryPlaceholder: true,
+      "Garrafa de vidro com suco natural cítrico de laranja, limão e maracujá",
   },
-  "beb-cerveja-ipa-serra": {
-    // Foto verificada: cerveja artesanal âmbar/dourada servida gelada
+  "beb-coqueteis-frutas": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=520&q=72",
+    imageAlt:
+      "Coquetéis artesanais de frutas tropicais com limão, hortelã e maracujá",
+  },
+  "beb-coca-cola-lata": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=520&q=72",
+    imageAlt: "Latas de Coca-Cola tradicional geladas com gelo (350ml)",
+  },
+  "beb-chopp-artesanal-serra": {
     imageUrl:
       "https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=520&q=72",
-    imageAlt: "Cerveja artesanal Session IPA da Serra servida gelada",
-    isTemporaryPlaceholder: false,
+    imageAlt: "Caneca de vidro com chopp artesanal dourado colarinho cremoso",
   },
 };
 
 /**
- * Resolve a imagem e o texto alternativo correspondentes ao ID de um item do cardápio.
+ * Resolve a fotografia correspondente ao ID de um item do cardápio.
  */
 export function resolveMenuItemImage(itemId: string): MenuDishImageEntry {
   return (
     MENU_ITEM_IMAGES[itemId] ?? {
-      imageUrl: undefined as unknown as string,
-      imageAlt: `Ilustração cerâmica do prato ${itemId}`,
-      isTemporaryPlaceholder: true,
+      // TODO: Fornecer foto real para o item adicionado
+      imageUrl: `images/pratos/${itemId}-PENDENTE.jpg`,
+      imageAlt: `Foto real pendente para o prato ${itemId}`,
+      isPendingRealPhoto: true,
     }
   );
 }
-

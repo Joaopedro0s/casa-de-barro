@@ -11,70 +11,51 @@ interface DishIllustrationProps {
   featured?: boolean;
 }
 
-const MOTIF_PALETTES: Record<
+const MOTIF_BACKGROUNDS: Record<
   PlateMotif,
   {
     bg: string;
-    rim: string;
-    plate: string;
-    center: string;
-    accent: string;
-    label: string;
+    border: string;
+    text: string;
   }
 > = {
   terracotta: {
     bg: "#EFE1D1",
-    rim: "#9E3B1E",
-    plate: "#DFC3A8",
-    center: "#7E2C14",
-    accent: "#C8643B",
-    label: "Cerâmica de Barro",
+    border: "#9E3B1E",
+    text: "#7E2C14",
   },
   olive: {
     bg: "#E6E9DC",
-    rim: "#3A5332",
-    plate: "#CFD6C2",
-    center: "#293C23",
-    accent: "#6A8258",
-    label: "Colheita da Horta",
+    border: "#3A5332",
+    text: "#293C23",
   },
   ochre: {
     bg: "#F2E6D0",
-    rim: "#B87624",
-    plate: "#E5CFA8",
-    center: "#875314",
-    accent: "#D4953B",
-    label: "Tacho Dourado",
+    border: "#B87624",
+    text: "#875314",
   },
   clay: {
     bg: "#ECE0D3",
-    rim: "#7A553E",
-    plate: "#D8C2AE",
-    center: "#563A28",
-    accent: "#A0765B",
-    label: "Forno a Lenha",
+    border: "#7A553E",
+    text: "#563A28",
   },
   charcoal: {
     bg: "#E7DFD7",
-    rim: "#3B2D25",
-    plate: "#CEC1B4",
-    center: "#231913",
-    accent: "#8A4326",
-    label: "Parrilla & Brasa",
+    border: "#3B2D25",
+    text: "#231913",
   },
   copper: {
     bg: "#F1E1D3",
-    rim: "#A84E24",
-    plate: "#E2C4AB",
-    center: "#6E2F12",
-    accent: "#CC7443",
-    label: "Tacho de Cobre",
+    border: "#A84E24",
+    text: "#6E2F12",
   },
 };
 
 /**
- * Exibe a fotografia do prato com renderização imediata (sem bloqueio por opacity-0 na hidratação SSR)
- * e fallback automático para uma composição geométrica em cerâmica rústica caso a imagem falhe.
+ * Exibe exclusivamente a fotografia real do prato.
+ * Caso o prato esteja marcado com caminho de foto pendente (ex.: `images/pratos/cocada-PENDENTE.jpg`)
+ * ou o arquivo fotográfico ainda não exista no servidor, exibe um quadro tipográfico neutro
+ * indicando o arquivo pendente (sem gerar ilustrações, ícones ou figuras vetoriais).
  */
 export function DishIllustration({
   name,
@@ -83,16 +64,17 @@ export function DishIllustration({
   motif,
 }: DishIllustrationProps) {
   const [hasError, setHasError] = useState(false);
-  const palette = MOTIF_PALETTES[motif] ?? MOTIF_PALETTES.terracotta;
+  const palette = MOTIF_BACKGROUNDS[motif] ?? MOTIF_BACKGROUNDS.terracotta;
 
-  const showImage = Boolean(imageUrl) && !hasError;
+  const isPendingPath = Boolean(imageUrl && imageUrl.includes("-PENDENTE"));
+  const showRealPhoto = Boolean(imageUrl) && !isPendingPath && !hasError;
 
   return (
     <div
       className="relative h-44 w-full overflow-hidden border-b border-[#D8C7B4] select-none sm:h-48"
       style={{ backgroundColor: palette.bg }}
     >
-      {showImage ? (
+      {showRealPhoto ? (
         <>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -110,73 +92,28 @@ export function DishIllustration({
       ) : (
         <div
           role="img"
-          aria-label={imageAlt || `Ilustração cerâmica para ${name}`}
-          className="flex h-full w-full flex-col items-center justify-center p-4"
+          aria-label={imageAlt || `Foto real pendente para ${name}`}
+          className="flex h-full w-full flex-col items-center justify-center p-5 text-center"
         >
-          <svg
-            viewBox="0 0 160 110"
-            className="h-28 w-40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
+          <div
+            className="w-full max-w-xs rounded-xl border border-dashed px-4 py-3"
+            style={{ borderColor: palette.border }}
           >
-            <circle
-              cx="80"
-              cy="55"
-              r="46"
-              fill={palette.plate}
-              stroke={palette.rim}
-              strokeWidth="2.5"
-            />
-            <circle
-              cx="80"
-              cy="55"
-              r="37"
-              stroke={palette.rim}
-              strokeWidth="1"
-              strokeDasharray="4 3"
-            />
-            <circle
-              cx="80"
-              cy="55"
-              r="24"
-              fill={palette.bg}
-              stroke={palette.accent}
-              strokeWidth="1.75"
-            />
-            <path
-              d="M68 55L80 43L92 55L80 67L68 55Z"
-              fill={palette.accent}
-              fillOpacity="0.25"
-              stroke={palette.center}
-              strokeWidth="1.5"
-            />
-            <circle cx="80" cy="55" r="4" fill={palette.center} />
-            <line
-              x1="20"
-              y1="55"
-              x2="28"
-              y2="55"
-              stroke={palette.rim}
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-            <line
-              x1="132"
-              y1="55"
-              x2="140"
-              y2="55"
-              stroke={palette.rim}
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-          <span
-            className="mt-1 text-xs font-medium"
-            style={{ color: palette.center }}
-          >
-            {palette.label}
-          </span>
+            <p
+              className="text-xs font-bold tracking-wide uppercase"
+              style={{ color: palette.text }}
+            >
+              Foto real pendente
+            </p>
+            <p className="mt-1 line-clamp-1 text-xs font-medium text-[#231913]">
+              {name}
+            </p>
+            {imageUrl && (
+              <code className="mt-1.5 block truncate rounded bg-[#231913]/8 px-2 py-0.5 font-mono text-[11px] text-[#5A4638]">
+                {imageUrl}
+              </code>
+            )}
+          </div>
         </div>
       )}
     </div>

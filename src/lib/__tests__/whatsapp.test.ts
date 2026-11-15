@@ -8,8 +8,8 @@ import {
 import type { CustomerOrderForm } from "@/types/menu";
 
 describe("Geração da mensagem formatada e do link wa.me do WhatsApp", () => {
-  const dish1 = menuItems[0]; // Dadinhos de Tapioca - R$ 36,90
-  const dish2 = menuItems[7]; // Baião de Dois Imperial - R$ 96,00
+  const dish1 = menuItems[0]; // Batatas Rústicas da Roça - R$ 36,90
+  const dish2 = menuItems[7]; // Arroz Caldoso de Camarões - R$ 96,00
 
   let cart = addCartItem([], dish1, 2); // 73.80
   cart = addCartItem(cart, dish2, 1); // + 96.00 = 169.80
@@ -35,10 +35,10 @@ describe("Geração da mensagem formatada e do link wa.me do WhatsApp", () => {
 
     expect(message).toContain("*NOVO PEDIDO — CASA DE BARRO*");
     expect(message).toContain(
-      "• 2x Dadinhos de Tapioca com Queijo Coalho e Melaço Picante — R$ 73,80 (R$ 36,90 un.)"
+      `• 2x ${dish1.name} — R$ 73,80 (R$ 36,90 un.)`
     );
     expect(message).toContain(
-      "• 1x Baião de Dois Imperial na Panela de Barro com Carne de Sol — R$ 96,00 (R$ 96,00 un.)"
+      `• 1x ${dish2.name} — R$ 96,00 (R$ 96,00 un.)`
     );
     expect(message).toContain("Subtotal dos itens: R$ 169,80");
     expect(message).toContain("Taxa de entrega: R$ 9,90");
@@ -99,4 +99,3 @@ describe("Geração da mensagem formatada e do link wa.me do WhatsApp", () => {
     expect(decodedText).toContain("Rua Harmonia, 400 - Vila Madalena");
   });
 });
-

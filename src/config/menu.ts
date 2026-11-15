@@ -22,13 +22,13 @@ export const menuCategories: MenuCategory[] = [
     id: "panelas-barro",
     name: "Panelas de Barro & Raiz",
     subtitle:
-      "Cozidos tradicionais, moquecas e receitas de tacho servidas fumegantes",
+      "Cozidos tradicionais, caçarolas e receitas de tacho servidas fumegantes",
   },
   {
     id: "massas-horta",
     name: "Massas & Da Horta",
     subtitle:
-      "Massas frescas feitas na casa e pratos vegetarianos com colheita orgânica",
+      "Massas frescas feitas na casa e tigelas com colheita orgânica",
   },
   {
     id: "guarnicoes",
@@ -40,70 +40,71 @@ export const menuCategories: MenuCategory[] = [
     id: "sobremesas",
     name: "Doces de Tacho",
     subtitle:
-      "Sobremesas brasileiras feitas no tacho de cobre com queijos e frutas da estação",
+      "Sobremesas artesanais da fazenda com frutas frescas, coco e cacau",
   },
   {
     id: "bebidas",
     name: "Bebidas & Refrescos",
     subtitle:
-      "Sucos prensados na hora, infusões com ervas frescas, refrigerantes e cervejas",
+      "Sucos prensados na hora, coquetéis de frutas, refrigerantes e chopp artesanal",
   },
 ];
 
 type RawMenuItem = Omit<MenuItem, "imageUrl" | "imageAlt">;
 
 /**
- * Catálogo base de pratos sem URLs hardcoded.
- * A associação de imagem (`imageUrl` e `imageAlt`) é resolvida de forma centralizada
- * pelo `id` único do prato através de `resolveMenuItemImage` em `src/config/menu-images.ts`.
+ * Catálogo de pratos sincronizado 100% com as fotografias reais mapeadas em `src/config/menu-images.ts`.
+ * Seguindo a regra de substituição de pratos, os itens sem fotografia correspondente foram
+ * substituídos pelos pratos reais retratados nas fotos disponíveis, e a Cocada de Forno
+ * foi marcada com caminho pendente (`images/pratos/cocada-PENDENTE.jpg`).
  */
 const rawMenuItems: RawMenuItem[] = [
   // 1. ENTRADAS DA ROÇA
   {
-    id: "ent-dadinho-tapioca",
+    id: "ent-batata-rustica",
     categoryId: "entradas",
-    name: "Dadinhos de Tapioca com Queijo Coalho e Melaço Picante",
+    name: "Batatas Rústicas da Roça Fritas com Páprica Defumada e Flor de Sal",
     description:
-      "Cubos dourados de tapioca granulada com queijo coalho artesanal do Seridó, acompanhados de melaço de cana infusionado com pimenta dedo-de-moça.",
+      "Batatas selecionadas cortadas em palitos rústicos na casa, fritas até ficarem douradas e crocantes por fora e macias por dentro, finalizadas com páprica defumada e flor de sal.",
     price: 36.9,
-    servingSize: "Porção com 10 unidades (320g)",
+    servingSize: "Porção (350g)",
     prepTime: "15 min",
     motif: "ochre",
     tags: ["Vegetariano", "Sem glúten", "Receita da casa"],
     featured: true,
   },
   {
-    id: "ent-bolinho-costela",
+    id: "ent-tulipas-frango",
     categoryId: "entradas",
-    name: "Croquetas de Costela Defumada na Lenha de Macieira",
+    name: "Tulipas & Coxinhas da Asa de Frango Caipira com Barbecue de Rapadura",
     description:
-      "Massa cremosa de mandioca amarela recheada com costela bovina desfiada após 8 horas de defumação, empanada na farinha panko rústica. Acompanha maionese de alho assado.",
+      "Cortes selecionados de asinha de frango caipira marinados em especiarias e empanados até ficarem ultra crocantes. Acompanha molho barbecue artesanal de rapadura no centro.",
     price: 42.0,
-    servingSize: "Porção com 6 unidades (300g)",
+    servingSize: "Porção com 6 unidades (340g)",
     prepTime: "15 min",
     motif: "terracotta",
-    tags: ["Assado na lenha", "Artesanal"],
+    tags: ["Artesanal", "Para compartilhar"],
   },
   {
-    id: "ent-pao-brasa",
+    id: "ent-pao-fermentacao-natural",
     categoryId: "entradas",
-    name: "Pão de Fermentação Natural na Brasa com Manteiga de Garrafa",
+    name: "Cesta de Pães Rústicos de Fermentação Natural Assados na Pedra",
     description:
-      "Fatias altas de pão rústico de campagne tostadas na grelha de ferro, finalizadas com manteiga de garrafa batida com ervas da horta, cabeça de alho confitada e flor de sal.",
+      "Pães artesanais de campagne e centeio com crosta crocante polvilhada na farinha e sementes de girassol tostadas, assados no forno a lenha e servidos com manteiga da roça.",
     price: 31.5,
-    servingSize: "Serve 2 pessoas (260g)",
+    servingSize: "Serve 2 pessoas (280g)",
     prepTime: "12 min",
     motif: "clay",
     tags: ["Vegetariano", "Assado na lenha", "Artesanal"],
   },
   {
-    id: "ent-pastel-carne-sol",
+    id: "ent-pasteis-triangulares",
     categoryId: "entradas",
-    name: "Pastel de Feira de Carne de Sol com Requeijão de Corte",
+    name: "Pastéis Triangulares Crocantes de Carne Condimentada com Molho de Ervas",
     description:
-      "Massa fina e crocante recheada com carne de sol desfiada na manteiga do sertão, cebola roxa caramelizada no mascavo e requeijão moreno derretido. Acompanha vinagrete de coentro.",
+      "Massa artesanal dourada em formato triangular recheada com carne bovina condimentada e especiarias da serra, servida na tábua de madeira com pimenta verde e molho fresco de coentro e hortelã.",
     price: 38.9,
-    servingSize: "Porção com 6 unidades (280g)",
+    servingSize: "Porção com 4 unidades (280g)",
     prepTime: "15 min",
     motif: "copper",
     tags: ["Receita da casa", "Para compartilhar"],
@@ -111,11 +112,11 @@ const rawMenuItems: RawMenuItem[] = [
 
   // 2. CARNES DE BRASA & FOGO
   {
-    id: "bra-costela-bafo",
+    id: "bra-costelinha-suina",
     categoryId: "brasa-fogo",
-    name: "Costela Bovina Assada 12h na Lenha com Mandioca na Manteiga",
+    name: "Costelinha Suína Assada na Lenha ao Barbecue com Batatas Fritas e Picles",
     description:
-      "Costela minga selecionada, assada lentamente em fogo de chão até soltar do osso. Acompanha mandioca cozida desmanchando na manteiga de garrafa, farofa crocante de cebola queimada e chimichurri de ervas frescas.",
+      "Rack inteiro de costelinha suína assada lentamente na lenha e pincelada com molho barbecue artesanal da casa. Servida na tábua de madeira com balde de batatas fritas crocantes, tomates maduros e picles de pepino.",
     price: 118.9,
     servingSize: "Serve 2 pessoas (750g)",
     prepTime: "30 min",
@@ -126,21 +127,21 @@ const rawMenuItems: RawMenuItem[] = [
   {
     id: "bra-bife-ancho",
     categoryId: "brasa-fogo",
-    name: "Bife Ancho na Parrilla com Risoto de Abóbora Cabotiá",
+    name: "Bife Ancho Maturado na Parrilla Fatiado na Tábua com Flor de Sal",
     description:
-      "Corte alto de bife ancho grelhado na brasa viva ao ponto da sua preferência, servido sobre risoto cremoso de abóbora cabotiá tostada no forno a lenha, queijo meia-cura e sálvia crocante.",
+      "Corte alto de bife ancho grelhado na brasa viva até atingir crosta caramelizada e interior suculento ao ponto, fatiado sobre tábua de madeira rústica e finalizado com flor de sal.",
     price: 84.5,
-    servingSize: "Individual (420g)",
+    servingSize: "Individual generoso (400g)",
     prepTime: "25 min",
     motif: "charcoal",
     tags: ["Assado na lenha", "Sem glúten"],
   },
   {
-    id: "bra-sobrecoxa-caipira",
+    id: "bra-file-frango-grelhado",
     categoryId: "brasa-fogo",
-    name: "Sobrecoxa de Frango Caipira Desossada na Brasa com Polenta Crioula",
+    name: "Filé de Frango Caipira Grelhado na Brasa com Legumes e Molho de Cogumelos",
     description:
-      "Sobrecoxa marinada em cítricos, alho e alecrim fresco, grelhada na brasa com pele crocante. Servida sobre polenta cremosa de milho crioulo moído na pedra e molho de tomates tostados.",
+      "Filés altos de peito de frango caipira marcados na grelha de ferro, acompanhados de seleta fresca de ervilhas, milho doce e cenoura na manteiga e molho cremoso de cogumelos frescos.",
     price: 64.9,
     servingSize: "Individual (390g)",
     prepTime: "22 min",
@@ -150,115 +151,115 @@ const rawMenuItems: RawMenuItem[] = [
 
   // 3. PANELAS DE BARRO & RAIZ
   {
-    id: "pan-baiao-imperial",
+    id: "pan-arroz-camarao-tacho",
     categoryId: "panelas-barro",
-    name: "Baião de Dois Imperial na Panela de Barro com Carne de Sol",
+    name: "Arroz Caldoso de Camarões Salteados na Panela de Ferro com Coentro",
     description:
-      "Arroz vermelho e feijão-de-corda cozidos juntos no caldo da própria carne, envoltos em nata fresca, queijo coalho tostado e coentro, cobertos por tiras suculentas de carne de sol acebolada e banana-da-terra grelhada.",
+      "Arroz cozido no caldo aromático de crustáceos e tomates maduros com camarões rosa salteados no azeite, pimentões doces, coentro fresco picado e gomos de limão siciliano.",
     price: 96.0,
     servingSize: "Serve 2 pessoas (700g)",
     prepTime: "25 min",
     motif: "terracotta",
-    tags: ["Panela de barro", "Para compartilhar", "Receita da casa"],
+    tags: ["Sem glúten", "Para compartilhar", "Receita da casa"],
     featured: true,
   },
   {
-    id: "pan-moqueca-peixe",
+    id: "pan-guisado-carne-barro",
     categoryId: "panelas-barro",
-    name: "Moqueca Capixaba & Baiana de Pescada Amarela na Panela de Barro",
+    name: "Guisado Rústico de Carne Bovina na Panela de Barro ao Caldo de Urucum",
     description:
-      "Postas altas de pescada amarela fresca cozidas na panela de barro de Goiabeiras com tomates maduros, pimentões doces, leite de coco natural e toque de azeite de dendê. Acompanha arroz branco soltinho, pirão de peixe e farofa de dendê.",
-    price: 124.0,
-    servingSize: "Serve 2 pessoas (850g)",
+      "Cubos macios de acém e paleta bovina cozidos lentamente na panela de barro em caldo encorpado de tomates, páprica defumada e urucum, finalizados com gergelim tostado e salsa fresca.",
+    price: 108.0,
+    servingSize: "Serve 2 pessoas (750g)",
     prepTime: "30 min",
     motif: "copper",
     tags: ["Panela de barro", "Sem glúten", "Para compartilhar"],
   },
   {
-    id: "pan-galinhada-tacho",
+    id: "pan-cacarola-frango-barro",
     categoryId: "panelas-barro",
-    name: "Galinhada da Serra no Tacho de Ferro com Quiabo Tostado",
+    name: "Caçarola de Frango Caipira Dourado com Tomates Assados e Queijo Curado",
     description:
-      "Arroz caldoso cozido no tacho de ferro com frango caipira dourado no açafrão-da-terra, milho verde fresco, lascas suaves de pequi, quiabo grelhado sem baba e cheiro-verde colhido na hora.",
+      "Cubos suculentos de frango caipira salteados na caçarola de cerâmica preta com tomates vermelhos assados, ervas finas, folhas de manjericão fresco, lasca de queijo curado e grissini artesanal.",
     price: 88.9,
-    servingSize: "Serve 2 pessoas (680g)",
+    servingSize: "Serve 2 pessoas (650g)",
     prepTime: "25 min",
     motif: "ochre",
-    tags: ["Panela de barro", "Sem glúten", "Para compartilhar"],
+    tags: ["Panela de barro", "Para compartilhar"],
   },
 
   // 4. MASSAS & DA HORTA
   {
-    id: "mas-nhoque-mandioquinha",
+    id: "mas-fettuccine-mignon",
     categoryId: "massas-horta",
-    name: "Nhoque de Mandioquinha Dourado com Ragu de Cogumelos da Serra",
+    name: "Fettuccine Artesanal na Caçarola com Iscas de Mignon e Tomates Secos",
     description:
-      "Nhoque artesanal leve de mandioquinha-salsa selado na manteiga de sálvia, coberto por ragu rústico de cogumelos Paris, Portobello e Shimeji salteados no vinho tinto com lascas de queijo Canastra curado.",
+      "Massa longa fresca tipo fettuccine envolvida em molho cremoso na frigideira de ferro com iscas de filé mignon grelhado, cogumelos salteados, tomates secos e folhas de espinafre.",
     price: 68.9,
-    servingSize: "Individual (360g)",
+    servingSize: "Individual (380g)",
     prepTime: "20 min",
     motif: "olive",
-    tags: ["Vegetariano", "Artesanal", "Receita da casa"],
+    tags: ["Artesanal", "Receita da casa"],
     featured: true,
   },
   {
     id: "mas-ravioli-canastra",
     categoryId: "massas-horta",
-    name: "Ravioli Artesanal de Queijo Canastra ao Molho de Tomates Assados",
+    name: "Ravioli Artesanal de Queijo Canastra na Manteiga de Sálvia e Parmesão",
     description:
-      "Massa fresca aberta no rolo com ovos caipiras, recheada com queijo da Serra da Canastra e ricota cremosa, servida com molho rústico de tomates italianos assados na lenha e manjericão roxo.",
+      "Massa fresca aberta no rolo com ovos caipiras, recheada com queijo da Serra da Canastra e ricota cremosa, salteada na manteiga dourada com ervas frescas e queijo parmesão ralado na hora.",
     price: 72.0,
     servingSize: "Individual (340g)",
     prepTime: "20 min",
     motif: "olive",
-    tags: ["Vegetariano", "Assado na lenha", "Artesanal"],
+    tags: ["Vegetariano", "Artesanal"],
   },
   {
-    id: "mas-moqueca-banana",
+    id: "mas-tigela-horta-tofu",
     categoryId: "massas-horta",
-    name: "Moqueca Vegetariana de Banana-da-Terra e Palmito Pupunha",
+    name: "Tigela da Horta com Tofu Grelhado na Brasa, Ovos Caipiras e Vegetais",
     description:
-      "Banana-da-terra madura grelhada, rodelas macias de palmito pupunha fresco e castanha-de-caju tostada cozidos na panela de barro com leite de coco, coentro e pimenta-de-cheiro. Acompanha arroz de coco e farofa crocante.",
-    price: 79.9,
-    servingSize: "Individual generoso (460g)",
-    prepTime: "22 min",
+      "Cubos dourados de tofu marinado e grelhado, ovos caipiras cozidos, milho crioulo, edamame, tomates cereja doces, pepino crocante, repolho roxo e folhas verdes orgânicas.",
+    price: 59.9,
+    servingSize: "Individual generoso (420g)",
+    prepTime: "18 min",
     motif: "olive",
-    tags: ["Vegetariano", "Sem glúten", "Panela de barro"],
+    tags: ["Vegetariano", "Sem glúten"],
   },
 
   // 5. GUARNIÇÕES DA CASA
   {
-    id: "gua-farofa-castanhas",
+    id: "gua-combinado-roca",
     categoryId: "guarnicoes",
-    name: "Farofa Crocante na Manteiga de Garrafa com Castanhas Brasileiras",
+    name: "Combinado da Roça: Bolinhos na Farofa, Iscas na Brasa e Castanhas",
     description:
-      "Farinha de mandioca artesanal de Bragança tostada lentamente na manteiga de garrafa com castanha-do-pará, castanha-de-caju e cebola crocante.",
-    price: 22.9,
-    servingSize: "Porção (200g)",
-    prepTime: "10 min",
+      "Trio de tigelas de cerâmica com bolinhos dourados sobre farofa crocante, iscas de carne mal passada com cebola roxa e folhas verdes, e carne temperada com castanhas-de-caju tostadas.",
+    price: 49.9,
+    servingSize: "Para compartilhar (450g)",
+    prepTime: "15 min",
     motif: "clay",
-    tags: ["Vegetariano", "Artesanal"],
+    tags: ["Para compartilhar", "Artesanal"],
   },
   {
-    id: "gua-feijao-tropeiro",
+    id: "gua-arroz-ervas-vagem",
     categoryId: "guarnicoes",
-    name: "Feijão Tropeiro Mineiro Completo",
+    name: "Arroz de Ervas da Horta com Vagens Verdes Tostadas e Tomates Confitados",
     description:
-      "Feijão roxinho cozido al dente salteado com bacon defumado na casa, linguiça artesanal, ovos caipiras, torresmo crocante, couve-manteiga rasgada fininha e farinha de mandioca.",
+      "Arroz soltinho finalizado com ervas frescas picadas, acompanhado de vagens verdes salteadas no azeite, tomates cereja amarelos e vermelhos confitados e mix de sementes crocantes.",
     price: 29.9,
-    servingSize: "Porção (300g)",
+    servingSize: "Porção (320g)",
     prepTime: "12 min",
     motif: "terracotta",
-    tags: ["Receita da casa", "Sem glúten"],
+    tags: ["Vegetariano", "Sem glúten"],
   },
   {
-    id: "gua-arroz-biro",
+    id: "gua-arroz-branco-casa",
     categoryId: "guarnicoes",
-    name: "Arroz Biro-Biro da Casa na Panela de Ferro",
+    name: "Arroz Branco Soltinho da Casa Refogado no Alho Assado",
     description:
-      "Arroz branco soltinho envolvido com ovos mexidos macios, cebola dourada, salsinha fresca e batata palha artesanal cortada na faca.",
-    price: 26.5,
-    servingSize: "Porção (280g)",
+      "Arroz agulhinha selecionado cozido na hora com alho dourado no azeite e toque de sal marinho, servido bem quente e soltinho para acompanhar nossas carnes e panelas de barro.",
+    price: 21.5,
+    servingSize: "Porção (260g)",
     prepTime: "10 min",
     motif: "ochre",
     tags: ["Vegetariano", "Sem glúten"],
@@ -279,11 +280,11 @@ const rawMenuItems: RawMenuItem[] = [
     featured: true,
   },
   {
-    id: "sob-pudim-rapadura",
+    id: "sob-manjar-morangos",
     categoryId: "sobremesas",
-    name: "Pudim de Leite da Fazenda com Caramelo de Rapadura e Cumaru",
+    name: "Manjar Cremoso de Coco & Baunilha no Pote com Calda de Morangos Frescos",
     description:
-      "Pudim lisinho assado em banho-maria lento, coberto por calda brilhante de rapadura negra perfumada com fava de cumaru (a baunilha da Amazônia) e flor de sal.",
+      "Creme branco aveludado de leite de coco fresco e fava de baunilha servido gelado em potinho de vidro com cobertura artesanal de morangos orgânicos picados e calda da própria fruta.",
     price: 27.9,
     servingSize: "Individual (180g)",
     prepTime: "8 min",
@@ -291,60 +292,71 @@ const rawMenuItems: RawMenuItem[] = [
     tags: ["Vegetariano", "Sem glúten", "Receita da casa"],
   },
   {
-    id: "sob-romeu-julieta",
+    id: "sob-taca-mousse-cacau",
     categoryId: "sobremesas",
-    name: "Romeu & Julieta Quente na Brasa com Goiabada Cascão de Tacho",
+    name: "Taça Gelada de Mousse de Cacau com Chantilly, Calda e Biscoito Crocante",
     description:
-      "Fatia alta de queijo Minas meia-cura tostada na chapa de ferro, servida com goiabada cascão cremosa derretida com toque de cachaça envelhecida em amburana.",
+      "Camadas de mousse aerada de chocolate meio amargo, creme branco leve e farofa crocante de biscoitos de cacau com baunilha, finalizadas com chantilly fresco e calda espessa de chocolate.",
     price: 29.5,
-    servingSize: "Individual (200g)",
+    servingSize: "Individual (220g)",
     prepTime: "10 min",
     motif: "terracotta",
-    tags: ["Vegetariano", "Sem glúten", "Artesanal"],
+    tags: ["Vegetariano", "Artesanal"],
   },
 
   // 7. BEBIDAS & REFRESCOS
   {
     id: "beb-limonada-capim-santo",
     categoryId: "bebidas",
-    name: "Limonada da Roça com Capim-Santo e Gengibre",
+    name: "Limonada da Roça com Capim-Santo, Hortelã e Gelo",
     description:
-      "Suco fresco de limão-cravo e limão-tahiti batido na hora com folhas de capim-santo da horta, toque de gengibre e melado claro. Engarrafada para viagem.",
+      "Refresco natural de limão-tahiti preparado na hora com rodelas de limão fresco, folhas de hortelã e capim-santo colhidos na horta e bastante gelo.",
     price: 16.9,
-    servingSize: "Garrafa lacrada (500ml)",
+    servingSize: "Copo / Embalagem viagem (450ml)",
     motif: "olive",
     tags: ["Vegetariano", "Sem glúten", "Artesanal"],
   },
   {
-    id: "beb-suco-caju",
+    id: "beb-suco-citrico-garrafa",
     categoryId: "bebidas",
-    name: "Suco Natural de Caju Integral com Hortelã",
+    name: "Suco Natural Cítrico de Laranja, Maracujá e Limão na Garrafa",
     description:
-      "Polpa integral de caju nordestino batida com água mineral gelada e folhas frescas de hortelã. Sem conservantes.",
+      "Blend refrescante de suco de laranja doce prensado na hora com polpa fresca de maracujá e toque de limão-siciliano. Servido em garrafa de vidro lacrada sem adição de conservantes.",
     price: 17.9,
-    servingSize: "Garrafa lacrada (500ml)",
+    servingSize: "Garrafa de vidro (500ml)",
     motif: "ochre",
     tags: ["Vegetariano", "Sem glúten", "Artesanal"],
   },
   {
-    id: "beb-agua-refrigerante",
+    id: "beb-coqueteis-frutas",
     categoryId: "bebidas",
-    name: "Refrigerante Lata / Água Tônica Artesanal",
+    name: "Coquetel / Caipirinha Artesanal de Frutas Tropicais da Estação",
     description:
-      "Opções geladas em lata de 350ml (Coca-Cola Normal, Coca-Cola Zero, Guaraná Antarctica ou Água Tônica). Informe sua preferência nas observações do pedido.",
+      "Coquetel preparado na hora com frutas frescas maceradas (opções: Maracujá com Cereja, Limão com Hortelã ou Pitaya com Frutas Vermelhas), gelo cristal e cachaça artesanal ou versão sem álcool.",
+    price: 26.9,
+    servingSize: "Copo baixo (320ml)",
+    motif: "copper",
+    tags: ["Sem glúten", "Artesanal"],
+  },
+  {
+    id: "beb-coca-cola-lata",
+    categoryId: "bebidas",
+    name: "Coca-Cola Tradicional em Lata Gelada (350ml)",
+    description:
+      "Refrigerante Coca-Cola tradicional em lata de 350ml servido trincando de gelado.",
     price: 9.5,
     servingSize: "Lata (350ml)",
     motif: "charcoal",
     tags: ["Sem glúten"],
   },
   {
-    id: "beb-cerveja-ipa-serra",
+    id: "beb-chopp-artesanal-serra",
     categoryId: "bebidas",
-    name: "Cerveja Artesanal Session IPA da Serra (600ml)",
+    name: "Chopp Artesanal Pilsen & Session IPA da Serra (500ml)",
     description:
-      "Cerveja artesanal puro malte de microcervejaria local, notas cítricas de maracujá e amargor equilibrado que harmoniza com carnes de brasa. Venda proibida para menores de 18 anos.",
-    price: 28.9,
-    servingSize: "Garrafa (600ml)",
+      "Chopp artesanal puro malte de microcervejaria local, dourado e refrescante com colarinho cremoso que harmoniza com carnes de brasa. Venda proibida para menores de 18 anos.",
+    price: 24.9,
+    servingSize: "Caneca / Growler viagem (500ml)",
     motif: "copper",
     tags: ["Artesanal"],
   },

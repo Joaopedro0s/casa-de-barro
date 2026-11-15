@@ -22,11 +22,11 @@ describe("Integração da interface do Cardápio Digital e Carrinho Dedicado", (
       screen.queryByRole("dialog", { name: /carrinho e comanda do pedido/i })
     ).toBeNull();
 
-    // 3. Adiciona um item do cardápio (Dadinhos de Tapioca - R$ 36,90)
-    const addDadinhoBtn = screen.getByRole("button", {
-      name: /adicionar dadinhos de tapioca com queijo coalho e melaço picante ao pedido/i,
+    // 3. Adiciona o primeiro item do cardápio (Batatas Rústicas da Roça - R$ 36,90)
+    const addFirstItemBtn = screen.getByRole("button", {
+      name: /adicionar batatas rústicas da roça fritas com páprica defumada e flor de sal ao pedido/i,
     });
-    await user.click(addDadinhoBtn);
+    await user.click(addFirstItemBtn);
 
     // O contador do cabeçalho atualiza imediatamente sem precisar abrir o carrinho
     expect(headerCartCount.textContent).toBe("1");
