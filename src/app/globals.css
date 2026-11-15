@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-display: var(--font-fraunces), Georgia, Cambria, "Times New Roman", serif;
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --bg-parchment: #f6efe6;
+  --bg-clay: #efe3d3;
+  --bg-card: #faf5ee;
+  --ink-charcoal: #231913;
+  --ink-earth: #5a4638;
+  --accent-terracotta: #9e3b1e;
+  --accent-olive: #3a5332;
+  --border-warm: #d8c7b4;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-parchment);
+  color: var(--ink-charcoal);
+  caret-color: var(--accent-terracotta);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-parchment);
+  color: var(--ink-charcoal);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Superfícies nativas personalizadas do navegador */
+::selection {
+  background-color: #9e3b1e;
+  color: #faf5ee;
+}
+
+:focus-visible {
+  outline: 2px solid #9e3b1e;
+  outline-offset: 2px;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Barra de rolagem temática em tons terrosos */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #efe3d3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b89f84;
+  border-radius: 9999px;
+  border: 2px solid #efe3d3;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9e3b1e;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
