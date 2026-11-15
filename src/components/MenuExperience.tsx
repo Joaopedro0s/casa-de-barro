@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { SearchX, ShoppingBag, X } from "lucide-react";
+import { SearchX, ShoppingBag } from "lucide-react";
+import { CartDrawer } from "@/components/CartDrawer";
 import { CategoryNav } from "@/components/CategoryNav";
 import { Header } from "@/components/Header";
 import { MenuCard } from "@/components/MenuCard";
-import { OrderPanel } from "@/components/OrderPanel";
 import { menuCategories, menuItems } from "@/config/menu";
 import { restaurantConfig } from "@/config/restaurant";
 import {
@@ -41,7 +41,7 @@ export function MenuExperience() {
   );
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTag, setActiveTag] = useState<DietaryTag | null>(null);
-  const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   // Hidratação segura a partir do sessionStorage no cliente
   useEffect(() => {
@@ -65,17 +65,24 @@ export function MenuExperience() {
     saveCustomerFormToSession(customerForm, window.sessionStorage);
   }, [customerForm, isHydrated]);
 
-  // Fecha a gaveta mobile ao pressionar Escape
+  // Fecha o carrinho ao pressionar Escape e controla rolagem do fundo
   useEffect(() => {
-    if (!isMobileDrawerOpen) return;
+    if (!isCartOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsMobileDrawerOpen(false);
+        setIsCartOpen(false);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isMobileDrawerOpen]);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isCartOpen]);
 
   const handleAddItem = (item: MenuItem) => {
     setCartItems((prev) => addCartItem(prev, item, 1));
@@ -152,7 +159,11 @@ export function MenuExperience() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F6EFE6] text-[#231913]">
-      <Header />
+      <Header
+        totalItems={summary.totalItems}
+        totalAmount={summary.total}
+        onOpenCart={() => setIsCartOpen(true)}
+      />
 
       <CategoryNav
         categories={menuCategories}
@@ -163,108 +174,96 @@ export function MenuExperience() {
         activeTag={activeTag}
         onSelectTag={setActiveTag}
         totalMatchingItems={filteredItems.length}
+        totalCartItems={summary.totalItems}
+        totalCartAmount={summary.total}
+        onOpenCart={() => setIsCartOpen(true)}
       />
 
-      <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 pb-28 sm:px-6 lg:px-8 lg:pb-16">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start">
-          {/* Coluna Principal: Categorias e Pratos do Cardápio */}
-          <div className="space-y-12 lg:col-span-7 xl:col-span-8">
-            {visibleCategories.length === 0 ? (
-              <div
-                role="status"
-                className="rounded-2xl border border-[#D8C7B4] bg-[#FAF5EE] p-10 text-center"
+      {/* Área Principal Exclusiva para o Cardápio (sem competição com a comanda) */}
+      <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 pb-28 sm:px-6 lg:px-8 lg:pb-24">
+        <div className="space-y-12">
+          {visibleCategories.length === 0 ? (
+            <div
+              role="status"
+              className="rounded-2xl border border-[#D8C7B4] bg-[#FAF5EE] p-10 text-center"
+            >
+              <SearchX
+                className="mx-auto h-10 w-10 text-[#9E3B1E]"
+                strokeWidth={1.5}
+                aria-hidden="true"
+              />
+              <h2 className="font-display mt-3 text-xl font-bold text-[#231913]">
+                Nenhum prato encontrado para essa busca
+              </h2>
+              <p className="mx-auto mt-1.5 max-w-md text-sm text-[#5A4638]">
+                Não encontramos itens com os filtros atuais. Tente buscar por
+                outro ingrediente ou limpe os filtros para ver o cardápio
+                completo.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveCategory("all");
+                  setSearchQuery("");
+                  setActiveTag(null);
+                }}
+                className="mt-5 inline-flex items-center justify-center rounded-xl bg-[#9E3B1E] px-5 py-2.5 text-sm font-semibold text-[#FAF5EE] transition-colors hover:bg-[#7E2C14]"
               >
-                <SearchX
-                  className="mx-auto h-10 w-10 text-[#9E3B1E]"
-                  strokeWidth={1.5}
-                  aria-hidden="true"
-                />
-                <h2 className="font-display mt-3 text-xl font-bold text-[#231913]">
-                  Nenhum prato encontrado para essa busca
-                </h2>
-                <p className="mx-auto mt-1.5 max-w-md text-sm text-[#5A4638]">
-                  Não encontramos itens com os filtros atuais. Tente buscar por
-                  outro ingrediente ou limpe os filtros para ver o cardápio
-                  completo.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setActiveCategory("all");
-                    setSearchQuery("");
-                    setActiveTag(null);
-                  }}
-                  className="mt-5 inline-flex items-center justify-center rounded-xl bg-[#9E3B1E] px-5 py-2.5 text-sm font-semibold text-[#FAF5EE] transition-colors hover:bg-[#7E2C14]"
-                >
-                  Mostrar todo o cardápio
-                </button>
-              </div>
-            ) : (
-              visibleCategories.map(({ category, items }) => (
-                <section
-                  key={category.id}
-                  id={`categoria-${category.id}`}
-                  aria-labelledby={`heading-${category.id}`}
-                  className="scroll-mt-36"
-                >
-                  <div className="mb-5 border-b border-[#D8C7B4] pb-3">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <h2
-                        id={`heading-${category.id}`}
-                        className="font-display text-2xl font-bold text-[#231913] sm:text-3xl"
-                      >
-                        {category.name}
-                      </h2>
-                      <span className="tabular-nums text-xs font-medium text-[#7A6352]">
-                        {items.length}{" "}
-                        {items.length === 1
-                          ? "opção disponível"
-                          : "opções disponíveis"}
-                      </span>
-                    </div>
-                    <p className="mt-1 text-sm text-[#5A4638]">
-                      {category.subtitle}
-                    </p>
+                Mostrar todo o cardápio
+              </button>
+            </div>
+          ) : (
+            visibleCategories.map(({ category, items }) => (
+              <section
+                key={category.id}
+                id={`categoria-${category.id}`}
+                aria-labelledby={`heading-${category.id}`}
+                className="scroll-mt-36"
+              >
+                <div className="mb-5 border-b border-[#D8C7B4] pb-3">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h2
+                      id={`heading-${category.id}`}
+                      className="font-display text-2xl font-bold text-[#231913] sm:text-3xl"
+                    >
+                      {category.name}
+                    </h2>
+                    <span className="tabular-nums text-xs font-medium text-[#7A6352]">
+                      {items.length}{" "}
+                      {items.length === 1
+                        ? "opção disponível"
+                        : "opções disponíveis"}
+                    </span>
                   </div>
+                  <p className="mt-1 text-sm text-[#5A4638]">
+                    {category.subtitle}
+                  </p>
+                </div>
 
-                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                    {items.map((item) => (
-                      <MenuCard
-                        key={item.id}
-                        item={item}
-                        quantityInCart={quantityById.get(item.id) ?? 0}
-                        onAdd={handleAddItem}
-                        onUpdateQuantity={handleUpdateQuantity}
-                      />
-                    ))}
-                  </div>
-                </section>
-              ))
-            )}
-          </div>
-
-          {/* Coluna Lateral (Desktop): Comanda / Carrinho Fixo */}
-          <aside
-            aria-label="Comanda lateral do pedido"
-            className="hidden lg:col-span-5 lg:block lg:sticky lg:top-28 xl:col-span-4"
-          >
-            <OrderPanel
-              items={cartItems}
-              isHydrated={isHydrated}
-              form={customerForm}
-              onUpdateForm={setCustomerForm}
-              onUpdateQuantity={handleUpdateQuantity}
-              onRemoveItem={handleRemoveItem}
-              onClearCart={handleClearCart}
-              idPrefix="desktop-order"
-            />
-          </aside>
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {items.map((item) => (
+                    <MenuCard
+                      key={item.id}
+                      item={item}
+                      quantityInCart={quantityById.get(item.id) ?? 0}
+                      onAdd={handleAddItem}
+                      onUpdateQuantity={handleUpdateQuantity}
+                    />
+                  ))}
+                </div>
+              </section>
+            ))
+          )}
         </div>
       </main>
 
-      {/* Barra Fixa Inferior no Celular / Tablet (< lg) */}
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-[#C6AF95] bg-[#231913] px-4 py-3 text-[#FAF5EE] lg:hidden">
-        <div className="mx-auto flex max-w-2xl items-center justify-between gap-3">
+      {/* Barra Fixa Inferior de Acesso Rápido ao Carrinho (Mobile sempre visível; Desktop quando há itens) */}
+      <div
+        className={`fixed inset-x-0 bottom-0 z-30 border-t border-[#C6AF95] bg-[#231913] px-4 py-3 text-[#FAF5EE] ${
+          summary.totalItems > 0 ? "block" : "block lg:hidden"
+        }`}
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-0 sm:px-2 lg:px-4">
           <div>
             <p className="tabular-nums text-xs text-[#DFCEBA]">
               {summary.totalItems === 0
@@ -280,10 +279,10 @@ export function MenuExperience() {
 
           <button
             type="button"
-            onClick={() => setIsMobileDrawerOpen(true)}
-            aria-expanded={isMobileDrawerOpen}
-            aria-controls="mobile-order-drawer"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#9E3B1E] px-4 py-3 text-sm font-bold text-[#FAF5EE] transition-colors hover:bg-[#7E2C14]"
+            onClick={() => setIsCartOpen(true)}
+            aria-expanded={isCartOpen}
+            aria-controls="dedicated-cart-drawer"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#9E3B1E] px-5 py-3 text-sm font-bold text-[#FAF5EE] transition-colors hover:bg-[#7E2C14]"
           >
             <ShoppingBag className="h-4 w-4" strokeWidth={2} />
             <span>
@@ -293,49 +292,18 @@ export function MenuExperience() {
         </div>
       </div>
 
-      {/* Gaveta / Modal Mobile de Comanda e Finalização */}
-      {isMobileDrawerOpen && (
-        <div
-          id="mobile-order-drawer"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Comanda do pedido"
-          className="fixed inset-0 z-50 flex flex-col justify-end bg-[#231913]/65 backdrop-blur-xs lg:hidden"
-        >
-          <div
-            className="absolute inset-0"
-            onClick={() => setIsMobileDrawerOpen(false)}
-            aria-hidden="true"
-          />
-          <div className="relative z-10 max-h-[90vh] w-full overflow-y-auto rounded-t-3xl border-t border-[#C6AF95] bg-[#FAF5EE] p-4 pb-8 sm:p-6">
-            <div className="mb-3 flex items-center justify-between border-b border-[#E5D7C6] pb-3">
-              <span className="font-display text-base font-bold text-[#231913]">
-                Finalizar Pedido pelo WhatsApp
-              </span>
-              <button
-                type="button"
-                onClick={() => setIsMobileDrawerOpen(false)}
-                aria-label="Fechar comanda"
-                className="inline-flex items-center gap-1 rounded-lg bg-[#ECE0D1] px-3 py-1.5 text-xs font-semibold text-[#231913] hover:bg-[#DFCEBA]"
-              >
-                <X className="h-4 w-4" strokeWidth={2} />
-                Fechar
-              </button>
-            </div>
-
-            <OrderPanel
-              items={cartItems}
-              isHydrated={isHydrated}
-              form={customerForm}
-              onUpdateForm={setCustomerForm}
-              onUpdateQuantity={handleUpdateQuantity}
-              onRemoveItem={handleRemoveItem}
-              onClearCart={handleClearCart}
-              idPrefix="mobile-order"
-            />
-          </div>
-        </div>
-      )}
+      {/* Área Dedicada do Carrinho / Comanda (Slide-over Drawer sob demanda) */}
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        items={cartItems}
+        isHydrated={isHydrated}
+        form={customerForm}
+        onUpdateForm={setCustomerForm}
+        onUpdateQuantity={handleUpdateQuantity}
+        onRemoveItem={handleRemoveItem}
+        onClearCart={handleClearCart}
+      />
 
       {/* Rodapé Rústico com Aviso de Demonstração */}
       <footer className="border-t border-[#D8C7B4] bg-[#EFE3D3] py-10 text-xs text-[#5A4638]">
@@ -363,4 +331,3 @@ export function MenuExperience() {
     </div>
   );
 }
-

@@ -55,12 +55,13 @@ CARDAPIO-DIGITAL-RESTAURANTE/
     │   ├── layout.tsx                     # Layout raiz, carregamento de fontes e metadados
     │   └── page.tsx                       # Página principal do cardápio digital
     ├── components/
-    │   ├── CategoryNav.tsx                # Barra fixa de categorias, busca e filtros rápidos
+    │   ├── CartDrawer.tsx                 # Área dedicada do carrinho (Slide-over Drawer sob demanda)
+    │   ├── CategoryNav.tsx                # Barra fixa de categorias, busca, filtros e atalho do carrinho
     │   ├── DishIllustration.tsx           # Exibição de imagem do prato com fallback vetorial em SVG
-    │   ├── Header.tsx                     # Cabeçalho com aviso de demonstração, horários e taxas
+    │   ├── Header.tsx                     # Cabeçalho com aviso de demonstração, contador do carrinho e taxas
     │   ├── MenuCard.tsx                   # Cartão individual de prato com controle de quantidade
-    │   ├── MenuExperience.tsx             # Orquestração do cardápio, carrinho persistente e gaveta mobile
-    │   ├── OrderPanel.tsx                 # Comanda lateral/gaveta com formulário e envio ao WhatsApp
+    │   ├── MenuExperience.tsx             # Orquestração do cardápio em largura total e carrinho dedicado
+    │   ├── OrderPanel.tsx                 # Conteúdo da comanda com resumo, formulário e envio ao WhatsApp
     │   └── __tests__/
     │       └── MenuExperience.test.tsx    # Teste de integração do fluxo completo de pedido
     ├── config/

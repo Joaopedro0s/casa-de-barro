@@ -1,6 +1,7 @@
 "use client";
 
-import { Search, X } from "lucide-react";
+import { Search, ShoppingBag, X } from "lucide-react";
+import { formatCurrency } from "@/lib/currency";
 import type { CategoryId, DietaryTag, MenuCategory } from "@/types/menu";
 
 interface CategoryNavProps {
@@ -12,6 +13,9 @@ interface CategoryNavProps {
   activeTag: DietaryTag | null;
   onSelectTag: (tag: DietaryTag | null) => void;
   totalMatchingItems: number;
+  totalCartItems: number;
+  totalCartAmount: number;
+  onOpenCart: () => void;
 }
 
 const QUICK_TAGS: DietaryTag[] = [
@@ -31,6 +35,9 @@ export function CategoryNav({
   activeTag,
   onSelectTag,
   totalMatchingItems,
+  totalCartItems,
+  totalCartAmount,
+  onOpenCart,
 }: CategoryNavProps) {
   const hasActiveFilters =
     activeCategory !== "all" ||
@@ -74,30 +81,48 @@ export function CategoryNav({
             )}
           </div>
 
-          {/* Selos rápidos de preparo / restrição */}
-          <div
-            className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0"
-            role="group"
-            aria-label="Filtrar por estilo de preparo"
-          >
-            {QUICK_TAGS.map((tag) => {
-              const isSelected = activeTag === tag;
-              return (
-                <button
-                  key={tag}
-                  type="button"
-                  onClick={() => onSelectTag(isSelected ? null : tag)}
-                  aria-pressed={isSelected}
-                  className={`shrink-0 rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
-                    isSelected
-                      ? "border-[#3A5332] bg-[#3A5332] text-[#FAF5EE]"
-                      : "border-[#D8C7B4] bg-[#FAF5EE] text-[#5A4638] hover:border-[#9E3B1E] hover:text-[#231913]"
-                  }`}
-                >
-                  {tag}
-                </button>
-              );
-            })}
+          <div className="flex items-center justify-between gap-3">
+            {/* Selos rápidos de preparo / restrição */}
+            <div
+              className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0"
+              role="group"
+              aria-label="Filtrar por estilo de preparo"
+            >
+              {QUICK_TAGS.map((tag) => {
+                const isSelected = activeTag === tag;
+                return (
+                  <button
+                    key={tag}
+                    type="button"
+                    onClick={() => onSelectTag(isSelected ? null : tag)}
+                    aria-pressed={isSelected}
+                    className={`shrink-0 rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                      isSelected
+                        ? "border-[#3A5332] bg-[#3A5332] text-[#FAF5EE]"
+                        : "border-[#D8C7B4] bg-[#FAF5EE] text-[#5A4638] hover:border-[#9E3B1E] hover:text-[#231913]"
+                    }`}
+                  >
+                    {tag}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Indicador compacto do carrinho fixo na barra superior (Desktop) */}
+            <button
+              type="button"
+              onClick={onOpenCart}
+              aria-label={`Ver carrinho (${totalCartItems} ${
+                totalCartItems === 1 ? "item" : "itens"
+              })`}
+              className="hidden shrink-0 items-center gap-2 rounded-xl border border-[#9E3B1E] bg-[#9E3B1E] px-3.5 py-2 text-xs font-bold text-[#FAF5EE] transition-colors hover:bg-[#7E2C14] lg:inline-flex"
+            >
+              <ShoppingBag className="h-4 w-4" strokeWidth={2} />
+              <span className="tabular-nums">
+                Comanda ({totalCartItems})
+                {totalCartItems > 0 && ` · ${formatCurrency(totalCartAmount)}`}
+              </span>
+            </button>
           </div>
         </div>
 
@@ -157,4 +182,3 @@ export function CategoryNav({
     </section>
   );
 }
-
