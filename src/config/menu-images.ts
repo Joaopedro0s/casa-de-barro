@@ -8,9 +8,9 @@
  *    correspondiam às fotografias reais disponíveis no projeto foram substituídos (em nome,
  *    descrição, ID e texto alternativo) pelos pratos reais retratados nas respectivas fotos.
  * 3. A foto de coquetéis (`photo-1551024709-8f23befc6f87`) que estava associada por engano
- *    à Cocada foi movida para a categoria de Bebidas (`beb-coqueteis-frutas`), e a Cocada
- *    (`sob-cocada-forno`) recebeu o caminho pendente `images/pratos/cocada-PENDENTE.jpg`
- *    com comentário `TODO` até que a fotografia real seja fornecida.
+ *    à Cocada foi movida para a categoria de Bebidas (`beb-coqueteis-frutas`), e a vaga na
+ *    seção de sobremesas foi preenchida pelo prato `sob-bolo-creme-framboesa` (Fatia de Bolo
+ *    Artesanal de Nata com Framboesas Frescas e Pistache), com foto real verificada.
  */
 
 export interface MenuDishImageEntry {
@@ -127,12 +127,11 @@ export const MENU_ITEM_IMAGES: Record<string, MenuDishImageEntry> = {
   },
 
   // 6. DOCES DE TACHO
-  "sob-cocada-forno": {
-    // TODO: Fornecer foto real da Cocada Cremosa de Forno a Lenha com Sorvete de Tapioca em public/images/pratos/cocada-PENDENTE.jpg
-    imageUrl: "images/pratos/cocada-PENDENTE.jpg",
+  "sob-bolo-creme-framboesa": {
+    imageUrl:
+      "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=520&q=72",
     imageAlt:
-      "Foto real pendente: Cocada Cremosa de Forno a Lenha com Sorvete de Tapioca",
-    isPendingRealPhoto: true,
+      "Fatia de bolo artesanal em camadas com creme branco de nata, geleia de frutas vermelhas, pistaches e framboesas frescas no topo",
   },
   "sob-manjar-morangos": {
     imageUrl:

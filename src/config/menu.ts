@@ -267,16 +267,16 @@ const rawMenuItems: RawMenuItem[] = [
 
   // 6. DOCES DE TACHO
   {
-    id: "sob-cocada-forno",
+    id: "sob-bolo-creme-framboesa",
     categoryId: "sobremesas",
-    name: "Cocada Cremosa de Forno a Lenha com Sorvete de Tapioca",
+    name: "Fatia de Bolo Artesanal de Nata com Framboesas Frescas e Pistache",
     description:
-      "Cocada de coco fresco ralada na hora e gratinada em panelinha de barro até dourar, servida morna com bola de sorvete artesanal de tapioca e calda de maracujá do mato.",
+      "Fatia generosa de bolo branco fofinho em três camadas recheadas com creme artesanal de nata, geleia rústica de frutas vermelhas e pistaches tostados, finalizada com framboesas frescas da serra.",
     price: 32.9,
-    servingSize: "Individual (220g)",
-    prepTime: "12 min",
+    servingSize: "Fatia individual (220g)",
+    prepTime: "8 min",
     motif: "copper",
-    tags: ["Vegetariano", "Sem glúten", "Assado na lenha"],
+    tags: ["Vegetariano", "Receita da casa", "Artesanal"],
     featured: true,
   },
   {
