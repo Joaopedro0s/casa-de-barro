@@ -5,7 +5,7 @@ import type { FulfillmentMode, PaymentMethod } from "@/types/menu";
  */
 export function sanitizeWhatsAppNumber(rawNumber: string | undefined): string {
   const digits = (rawNumber ?? "").replace(/\D/g, "");
-  return digits.length >= 10 ? digits : "5511999990000";
+  return digits.length >= 10 ? digits : "5512991026455";
 }
 
 /**
@@ -34,7 +34,7 @@ export function resolveDeliveryFee(rawFee: string | number | undefined): number 
 export const restaurantConfig = {
   isDemo: true,
   demoNotice:
-    "Ambiente de demonstração para portfólio: nome do restaurante, endereço, telefone, pratos e valores são fictícios.",
+    "Ambiente de demonstração para portfólio: nome do restaurante, endereço, pratos e valores são fictícios.",
   name: "Casa de Barro",
   subtitle: "Cozinha de Fogo, Panela de Barro & Raiz",
   tagline:
@@ -52,9 +52,9 @@ export const restaurantConfig = {
      * Prioriza a variável de ambiente NEXT_PUBLIC_WHATSAPP_NUMBER.
      */
     whatsappNumber: sanitizeWhatsAppNumber(
-      process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "5511999990000"
+      process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "5512991026455"
     ),
-    displayPhone: "(11) 99999-0000 (Exemplo)",
+    displayPhone: "+55 (12) 99102-6455",
   },
   delivery: {
     /**
@@ -108,4 +108,3 @@ export const PAYMENT_METHOD_LABELS: Record<
     helper: "Informe no campo abaixo se precisar de troco",
   },
 };
-

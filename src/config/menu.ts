@@ -59,7 +59,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Porção com 10 unidades (320g)",
     prepTime: "15 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Porção de dadinhos dourados de tapioca com molho de melaço em cerâmica rústica",
     motif: "ochre",
     tags: ["Vegetariano", "Sem glúten", "Receita da casa"],
@@ -75,7 +75,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Porção com 6 unidades (300g)",
     prepTime: "15 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Croquetas douradas de costela defumada servidas com maionese artesanal",
     motif: "terracotta",
     tags: ["Assado na lenha", "Artesanal"],
@@ -90,7 +90,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Serve 2 pessoas (260g)",
     prepTime: "12 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Fatias de pão artesanal tostado na brasa com alho assado e ervas",
     motif: "clay",
     tags: ["Vegetariano", "Assado na lenha", "Artesanal"],
@@ -105,7 +105,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Porção com 6 unidades (280g)",
     prepTime: "15 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Pastéis artesanais dourados servidos com vinagrete fresco",
     motif: "copper",
     tags: ["Receita da casa", "Para compartilhar"],
@@ -122,7 +122,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Serve 2 pessoas (750g)",
     prepTime: "30 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Costela bovina assada lentamente servida com mandioca cremosa e ervas",
     motif: "terracotta",
     tags: ["Assado na lenha", "Para compartilhar", "Receita da casa"],
@@ -138,7 +138,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Individual (420g)",
     prepTime: "25 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Bife ancho grelhado na brasa servido com risoto rústico de abóbora",
     motif: "charcoal",
     tags: ["Assado na lenha", "Sem glúten"],
@@ -153,7 +153,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Individual (390g)",
     prepTime: "22 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Sobrecoxa de frango dourada na brasa sobre polenta cremosa",
     motif: "ochre",
     tags: ["Assado na lenha", "Sem glúten"],
@@ -170,7 +170,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Serve 2 pessoas (700g)",
     prepTime: "25 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Baião de dois cremoso servido em panela de barro com queijo coalho",
     motif: "terracotta",
     tags: ["Panela de barro", "Para compartilhar", "Receita da casa"],
@@ -186,7 +186,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Serve 2 pessoas (850g)",
     prepTime: "30 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Moqueca de peixe fumegante em panela de barro tradicional",
     motif: "copper",
     tags: ["Panela de barro", "Sem glúten", "Para compartilhar"],
@@ -201,7 +201,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Serve 2 pessoas (680g)",
     prepTime: "25 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Galinhada tradicional com açafrão-da-terra e ervas frescas",
     motif: "ochre",
     tags: ["Panela de barro", "Sem glúten", "Para compartilhar"],
@@ -218,7 +218,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Individual (360g)",
     prepTime: "20 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Prato de nhoque artesanal dourado com cogumelos frescos e sálvia",
     motif: "olive",
     tags: ["Vegetariano", "Artesanal", "Receita da casa"],
@@ -234,7 +234,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Individual (340g)",
     prepTime: "20 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1587740908075-9e245070dfaa?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1587740908075-9e245070dfaa?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Ravioli artesanal ao molho de tomates assados e manjericão",
     motif: "olive",
     tags: ["Vegetariano", "Assado na lenha", "Artesanal"],
@@ -249,7 +249,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Individual generoso (460g)",
     prepTime: "22 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Moqueca vegetariana de banana-da-terra e palmito pupunha",
     motif: "olive",
     tags: ["Vegetariano", "Sem glúten", "Panela de barro"],
@@ -266,7 +266,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Porção (200g)",
     prepTime: "10 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Tigela de barro com farofa dourada de castanhas brasileiras",
     motif: "clay",
     tags: ["Vegetariano", "Artesanal"],
@@ -281,7 +281,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Porção (300g)",
     prepTime: "12 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Porção de feijão tropeiro mineiro com couve fresca e torresmo",
     motif: "terracotta",
     tags: ["Receita da casa", "Sem glúten"],
@@ -296,7 +296,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Porção (280g)",
     prepTime: "10 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Arroz biro-biro com batata palha artesanal",
     motif: "ochre",
     tags: ["Vegetariano", "Sem glúten"],
@@ -313,7 +313,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Individual (220g)",
     prepTime: "12 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Cocada cremosa gratinada servida com bola de sorvete artesanal",
     motif: "copper",
     tags: ["Vegetariano", "Sem glúten", "Assado na lenha"],
@@ -329,7 +329,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Individual (180g)",
     prepTime: "8 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Fatia generosa de pudim artesanal com calda escura de rapadura",
     motif: "ochre",
     tags: ["Vegetariano", "Sem glúten", "Receita da casa"],
@@ -344,7 +344,7 @@ export const menuItems: MenuItem[] = [
     servingSize: "Individual (200g)",
     prepTime: "10 min",
     imageUrl:
-      "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Queijo minas grelhado com calda espessa de goiabada cascão",
     motif: "terracotta",
     tags: ["Vegetariano", "Sem glúten", "Artesanal"],
@@ -360,7 +360,7 @@ export const menuItems: MenuItem[] = [
     price: 16.9,
     servingSize: "Garrafa lacrada (500ml)",
     imageUrl:
-      "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Refresco artesanal de limão com capim-santo fresco",
     motif: "olive",
     tags: ["Vegetariano", "Sem glúten", "Artesanal"],
@@ -374,7 +374,7 @@ export const menuItems: MenuItem[] = [
     price: 17.9,
     servingSize: "Garrafa lacrada (500ml)",
     imageUrl:
-      "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Suco natural de caju gelado com folhas de hortelã",
     motif: "ochre",
     tags: ["Vegetariano", "Sem glúten", "Artesanal"],
@@ -388,7 +388,7 @@ export const menuItems: MenuItem[] = [
     price: 9.5,
     servingSize: "Lata (350ml)",
     imageUrl:
-      "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Lata de bebida gelada com gelo",
     motif: "charcoal",
     tags: ["Sem glúten"],
@@ -402,7 +402,7 @@ export const menuItems: MenuItem[] = [
     price: 28.9,
     servingSize: "Garrafa (600ml)",
     imageUrl:
-      "https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=520&q=72",
     imageAlt: "Garrafa de cerveja artesanal âmbar servida em taça",
     motif: "copper",
     tags: ["Artesanal"],

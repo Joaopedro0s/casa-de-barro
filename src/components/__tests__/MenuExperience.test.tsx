@@ -79,7 +79,7 @@ describe("Integração da interface do Cardápio Digital e fluxo de pedido", () 
 
     expect(openSpy).toHaveBeenCalledTimes(1);
     const openedUrl = openSpy.mock.calls[0][0] as string;
-    expect(openedUrl).toContain("https://wa.me/");
+    expect(openedUrl).toContain("https://wa.me/5512991026455?text=");
     expect(decodeURIComponent(openedUrl)).toContain("Rafael Mendes");
     expect(decodeURIComponent(openedUrl)).toContain("R$ 46,80");
 

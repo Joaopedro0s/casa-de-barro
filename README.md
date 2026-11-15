@@ -155,7 +155,7 @@ O número de WhatsApp não fica fixo nos componentes visuais. Você pode alterá
 - **Via variável de ambiente (Recomendado para produção/Vercel):**
   Defina a variável `NEXT_PUBLIC_WHATSAPP_NUMBER` no arquivo `.env.local` ou no painel da Vercel contendo o código do país (`55`), o DDD e o número, apenas com dígitos:
   ```env
-  NEXT_PUBLIC_WHATSAPP_NUMBER=5511999990000
+  NEXT_PUBLIC_WHATSAPP_NUMBER=5512991026455
   ```
 - **Via arquivo de configuração:**
   Edite o valor padrão em `src/config/restaurant.ts` na propriedade `contact.whatsappNumber` (e `contact.displayPhone` para o texto exibido no cabeçalho).
@@ -195,7 +195,7 @@ Todo o catálogo de categorias e pratos está isolado em `src/config/menu.ts`:
 2. Acesse [vercel.com/new](https://vercel.com/new) e importe o repositório.
 3. Caso o repositório contenha múltiplas pastas, configure o **Root Directory** como `CARDAPIO-DIGITAL-RESTAURANTE`.
 4. Na seção **Environment Variables**, adicione:
-   - `NEXT_PUBLIC_WHATSAPP_NUMBER` = número de WhatsApp com DDI e DDD (ex.: `5511999990000`)
+   - `NEXT_PUBLIC_WHATSAPP_NUMBER` = número de WhatsApp com DDI e DDD (ex.: `5512991026455`)
    - `NEXT_PUBLIC_DELIVERY_FEE` = valor da taxa fixa de entrega (ex.: `9.90`)
 5. Clique em **Deploy**. A Vercel detectará automaticamente o Next.js, executará `npm run build` e publicará a aplicação em uma URL HTTPS de produção.
 

@@ -73,8 +73,8 @@ const MOTIF_PALETTES: Record<
 };
 
 /**
- * Exibe a fotografia do prato com tratamento de carregamento e fallback automático
- * para uma composição geométrica em cerâmica rústica caso a imagem não esteja disponível.
+ * Exibe a fotografia do prato com renderização imediata (sem bloqueio por opacity-0 na hidratação SSR)
+ * e fallback automático para uma composição geométrica em cerâmica rústica caso a imagem falhe.
  */
 export function DishIllustration({
   name,
@@ -83,7 +83,6 @@ export function DishIllustration({
   motif,
 }: DishIllustrationProps) {
   const [hasError, setHasError] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
   const palette = MOTIF_PALETTES[motif] ?? MOTIF_PALETTES.terracotta;
 
   const showImage = Boolean(imageUrl) && !hasError;
@@ -95,27 +94,17 @@ export function DishIllustration({
     >
       {showImage ? (
         <>
-          {!isLoaded && (
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 animate-pulse"
-              style={{ backgroundColor: palette.plate }}
-            />
-          )}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={imageUrl}
             alt={imageAlt || name}
-            loading="lazy"
-            onLoad={() => setIsLoaded(true)}
+            decoding="async"
             onError={() => setHasError(true)}
-            className={`h-full w-full object-cover transition-opacity duration-300 ${
-              isLoaded ? "opacity-100" : "opacity-0"
-            }`}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#231913]/45 via-transparent to-transparent"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#231913]/40 via-transparent to-transparent"
           />
         </>
       ) : (
@@ -131,7 +120,6 @@ export function DishIllustration({
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
           >
-            {/* Prato de barro concêntrico geométrico */}
             <circle
               cx="80"
               cy="55"
@@ -194,4 +182,3 @@ export function DishIllustration({
     </div>
   );
 }
-
