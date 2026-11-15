@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" fill="none">
+  <rect width="480" height="280" fill="#EFE1D1"/>
+  <rect x="10" y="10" width="460" height="260" rx="14" stroke="#9E3B1E" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <g transform="translate(0, -18)">
+    
+      <ellipse cx="240" cy="128" rx="92" ry="44" fill="#5A311E" stroke="#231913" stroke-width="2.5"/>
+      <ellipse cx="240" cy="126" rx="80" ry="34" fill="#9E5834"/>
+      <circle cx="205" cy="120" r="13" fill="#F5C842" stroke="#FAF5EE" stroke-width="4"/>
+      <path d="M240 106 Q265 119 245 142" stroke="#3A5332" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <rect x="268" y="116" width="22" height="18" rx="4" fill="#C86D3B"/>
+    
+  </g>
+  <text x="240" y="192" text-anchor="middle" fill="#231913" font-family="Georgia, serif" font-size="16" font-weight="700">Feijão Tropeiro Mineiro Completo</text>
+  <text x="240" y="213" text-anchor="middle" fill="#7E2C14" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500">Feijão roxinho, bacon, linguiça, ovos caipiras, couve e torresmo</text>
+  <rect x="105" y="228" width="270" height="24" rx="12" fill="#231913" fill-opacity="0.88"/>
+  <text x="240" y="244" text-anchor="middle" fill="#FAF5EE" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" letter-spacing="0.04em">PLACEHOLDER TEMPORÁRIO · gua-feijao-tropeiro.svg</text>
+</svg>

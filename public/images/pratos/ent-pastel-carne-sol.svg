@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" fill="none">
+  <rect width="480" height="280" fill="#F1E1D3"/>
+  <rect x="10" y="10" width="460" height="260" rx="14" stroke="#A84E24" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <g transform="translate(0, -18)">
+    
+      <rect x="140" y="90" width="76" height="50" rx="6" fill="#E8BA70" stroke="#875314" stroke-width="2.5" stroke-dasharray="5 2"/>
+      <rect x="200" y="108" width="76" height="50" rx="6" fill="#F0C67E" stroke="#875314" stroke-width="2.5" stroke-dasharray="5 2"/>
+      <circle cx="325" cy="126" r="24" fill="#FAF5EE" stroke="#6E2F12" stroke-width="2.5"/>
+      <circle cx="319" cy="122" r="5" fill="#B83B24"/>
+      <circle cx="332" cy="130" r="5" fill="#3A5332"/>
+      <circle cx="323" cy="133" r="4" fill="#E5A965"/>
+    
+  </g>
+  <text x="240" y="192" text-anchor="middle" fill="#231913" font-family="Georgia, serif" font-size="16" font-weight="700">Pastel de Feira de Carne de Sol</text>
+  <text x="240" y="213" text-anchor="middle" fill="#6E2F12" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500">Pastéis retangulares crocantes + vinagrete de coentro</text>
+  <rect x="105" y="228" width="270" height="24" rx="12" fill="#231913" fill-opacity="0.88"/>
+  <text x="240" y="244" text-anchor="middle" fill="#FAF5EE" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" letter-spacing="0.04em">PLACEHOLDER TEMPORÁRIO · ent-pastel-carne-sol.svg</text>
+</svg>

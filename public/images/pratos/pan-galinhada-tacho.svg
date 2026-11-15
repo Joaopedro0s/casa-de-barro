@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" fill="none">
+  <rect width="480" height="280" fill="#F2E6D0"/>
+  <rect x="10" y="10" width="460" height="260" rx="14" stroke="#B87624" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <g transform="translate(0, -18)">
+    
+      <ellipse cx="240" cy="126" rx="100" ry="46" fill="#2E2622" stroke="#231913" stroke-width="3"/>
+      <ellipse cx="240" cy="126" rx="86" ry="36" fill="#E8AC3B"/>
+      <ellipse cx="205" cy="122" rx="26" ry="16" fill="#A84E24"/>
+      <ellipse cx="268" cy="130" rx="26" ry="16" fill="#A84E24"/>
+      <rect x="230" y="104" width="28" height="10" rx="5" fill="#3A5332"/>
+      <rect x="220" y="140" width="28" height="10" rx="5" fill="#3A5332"/>
+    
+  </g>
+  <text x="240" y="192" text-anchor="middle" fill="#231913" font-family="Georgia, serif" font-size="16" font-weight="700">Galinhada da Serra no Tacho de Ferro</text>
+  <text x="240" y="213" text-anchor="middle" fill="#875314" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500">Arroz caldoso no açafrão, frango caipira, pequi e quiabo</text>
+  <rect x="105" y="228" width="270" height="24" rx="12" fill="#231913" fill-opacity="0.88"/>
+  <text x="240" y="244" text-anchor="middle" fill="#FAF5EE" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" letter-spacing="0.04em">PLACEHOLDER TEMPORÁRIO · pan-galinhada-tacho.svg</text>
+</svg>

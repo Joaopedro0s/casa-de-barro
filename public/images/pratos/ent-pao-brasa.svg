@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" fill="none">
+  <rect width="480" height="280" fill="#ECE0D3"/>
+  <rect x="10" y="10" width="460" height="260" rx="14" stroke="#7A553E" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <g transform="translate(0, -18)">
+    
+      <path d="M140 144 C140 94, 220 94, 220 144 Z" fill="#D8B384" stroke="#563A28" stroke-width="3"/>
+      <path d="M210 154 C210 104, 290 104, 290 154 Z" fill="#CFA472" stroke="#563A28" stroke-width="3"/>
+      <line x1="158" y1="119" x2="202" y2="119" stroke="#563A28" stroke-width="2" stroke-linecap="round"/>
+      <line x1="154" y1="131" x2="206" y2="131" stroke="#563A28" stroke-width="2" stroke-linecap="round"/>
+      <line x1="228" y1="129" x2="272" y2="129" stroke="#563A28" stroke-width="2" stroke-linecap="round"/>
+      <line x1="224" y1="141" x2="276" y2="141" stroke="#563A28" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="330" cy="130" r="22" fill="#EBC278" stroke="#563A28" stroke-width="2"/>
+    
+  </g>
+  <text x="240" y="192" text-anchor="middle" fill="#231913" font-family="Georgia, serif" font-size="16" font-weight="700">Pão de Fermentação Natural na Brasa</text>
+  <text x="240" y="213" text-anchor="middle" fill="#563A28" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500">Fatias tostadas na grelha + manteiga de garrafa e alho</text>
+  <rect x="105" y="228" width="270" height="24" rx="12" fill="#231913" fill-opacity="0.88"/>
+  <text x="240" y="244" text-anchor="middle" fill="#FAF5EE" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" letter-spacing="0.04em">PLACEHOLDER TEMPORÁRIO · ent-pao-brasa.svg</text>
+</svg>

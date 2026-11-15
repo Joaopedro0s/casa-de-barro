@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" fill="none">
+  <rect width="480" height="280" fill="#F2E6D0"/>
+  <rect x="10" y="10" width="460" height="260" rx="14" stroke="#B87624" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <g transform="translate(0, -18)">
+    
+      <ellipse cx="240" cy="146" rx="88" ry="22" fill="#FAF5EE" stroke="#B87624" stroke-width="2.5"/>
+      <path d="M185 144 L200 94 L280 94 L295 144 Z" fill="#F2C86D" stroke="#6E2F12" stroke-width="2"/>
+      <path d="M198 94 Q240 110 282 94 L278 109 Q240 122 202 109 Z" fill="#5C220B"/>
+      <ellipse cx="240" cy="94" rx="40" ry="9" fill="#4A1A07"/>
+    
+  </g>
+  <text x="240" y="192" text-anchor="middle" fill="#231913" font-family="Georgia, serif" font-size="16" font-weight="700">Pudim de Leite com Caramelo de Rapadura</text>
+  <text x="240" y="213" text-anchor="middle" fill="#875314" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500">Pudim lisinho em banho-maria com calda escura de rapadura</text>
+  <rect x="105" y="228" width="270" height="24" rx="12" fill="#231913" fill-opacity="0.88"/>
+  <text x="240" y="244" text-anchor="middle" fill="#FAF5EE" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" letter-spacing="0.04em">PLACEHOLDER TEMPORÁRIO · sob-pudim-rapadura.svg</text>
+</svg>
